@@ -59,27 +59,27 @@ public class UsuariosServiceImpl implements UsuariosService {
     }
 
     @Override
-    public boolean deleteById(Long id_usuario) {
-        Optional<Usuarios> usuarioOpt = usuariosRepository.findById(id_usuario);
+    public boolean deleteById(Long id_usuarios) {
+        Optional<Usuarios> usuarioOpt = usuariosRepository.findById(id_usuarios);
         if (usuarioOpt.isPresent()) {
             Usuarios usuario = usuarioOpt.get();
-            usuario.setEstado("E"); // E = Eliminado
+            usuario.setEstado("ELIMINADO"); // E = Eliminado
             usuariosRepository.save(usuario);
-            log.info("Usuario con ID: " + id_usuario + " marcado como ELIMINADO");
+            log.info("Usuario con ID: " + id_usuarios + " marcado como ELIMINADO");
             return true;
         }
         return false;
     }
     
     @Override
-    public boolean restoreById(Long id_usuario) {
-        Optional<Usuarios> usuarioOpt = usuariosRepository.findById(id_usuario);
+    public boolean restoreById(Long id_usuarios) {
+        Optional<Usuarios> usuarioOpt = usuariosRepository.findById(id_usuarios);
         if (usuarioOpt.isPresent()) {
             Usuarios usuario = usuarioOpt.get();
             if ("E".equalsIgnoreCase(usuario.getEstado())) { // Solo si está Eliminado
                 usuario.setEstado("A"); // A = Activo
                 usuariosRepository.save(usuario);
-                log.info("Usuario con ID: " + id_usuario + " restaurado a ACTIVO");
+                log.info("Usuario con ID: " + id_usuarios + " restaurado a ACTIVO");
                 return true;
             }
         }

@@ -10,7 +10,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
     hibernate:
-      ddl-auto: none  # Puede ser 'create', 'update', 'validate' o 'none' | Hibernate no creará/modificará la estructura
+      ddl-auto: update  # Puede ser 'create', 'update', 'validate' o 'none' | Hibernate no creará/modificará la estructura
     show-sql: true  # Para ver las consultas SQL en consola
   #sql:
    # init:

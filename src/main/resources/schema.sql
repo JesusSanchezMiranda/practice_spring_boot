@@ -7,6 +7,6 @@ CREATE TABLE Usuarios (
     celular CHAR(9) NOT NULL,
     email VARCHAR(200) NOT NULL,
     rol CHAR(1) NOT NULL,
-    registro_actual TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    registro_actual DATETIME DEFAULT GETDATE(),
     estado CHAR(1) NOT NULL
 );

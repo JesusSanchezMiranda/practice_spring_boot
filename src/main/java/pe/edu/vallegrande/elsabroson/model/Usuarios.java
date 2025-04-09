@@ -1,5 +1,7 @@
 package pe.edu.vallegrande.elsabroson.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,11 +39,12 @@ public class Usuarios {
     @Column(name = "rol")
     private String rol;
 
+    @CreationTimestamp
     @Column(name = "registro_actual")
     private String registro_actual;
 
     @Column(name = "estado")
-    private String estado;
+    private String estado = "ACTIVO";
 
     // Getters y Setters
 

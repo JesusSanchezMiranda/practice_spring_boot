@@ -14,31 +14,36 @@ public class UsuariosRest {
     @Autowired
     private UsuariosService usuariosService;
 
+    // Listar todos los usuarios
     @GetMapping
     public List<Usuarios> listarUsuarios() {
         return usuariosService.findAll();
     }
 
+    // Listar usuarios por estado (activo, inactivo)
     @GetMapping("/estado/{estado}")
     public List<Usuarios> listarPorEstado(@PathVariable String estado) {
         return usuariosService.findByEstado(estado.toUpperCase());
     }
 
+    // Guardar un usuario
     @PostMapping
     public Usuarios guardarUsuarios(@RequestBody Usuarios usuarios) {
         return usuariosService.save(usuarios);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Usuarios> obtenerUsuarios(@PathVariable Long id_usuario) {
-        return usuariosService.findById(id_usuario)
+    // Obtener un usuario por ID
+    @GetMapping("/{id_usuarios}")
+    public ResponseEntity<Usuarios> obtenerUsuarios(@PathVariable Long id_usuarios) {
+        return usuariosService.findById(id_usuarios)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Usuarios> actualizarUsuarios(@PathVariable Long id_usuario, @RequestBody Usuarios usuariosActualizado) {
-        Usuarios actualizado = usuariosService.update(id_usuario, usuariosActualizado);
+    // Actualizar un usuario por ID
+    @PutMapping("/{id_usuarios}")
+    public ResponseEntity<Usuarios> actualizarUsuarios(@PathVariable Long id_usuarios, @RequestBody Usuarios usuariosActualizado) {
+        Usuarios actualizado = usuariosService.update(id_usuarios, usuariosActualizado);
         if (actualizado != null) {
             return ResponseEntity.ok(actualizado);
         } else {
@@ -46,18 +51,20 @@ public class UsuariosRest {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarUsuarios(@PathVariable Long id_usuario) {
-        if (usuariosService.deleteById(id_usuario)) {
+    // Eliminar un usuario por ID
+    @DeleteMapping("/{id_usuarios}")
+    public ResponseEntity<Void> eliminarUsuarios(@PathVariable Long id_usuarios) {
+        if (usuariosService.deleteById(id_usuarios)) {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @PutMapping("/restaurar/{id}")
-    public ResponseEntity<Void> restaurarUsuario(@PathVariable Long id_usuario) {
-        if (usuariosService.restoreById(id_usuario)) {
+    // Restaurar un usuario por ID
+    @PutMapping("/restaurar/{id_usuarios}")
+    public ResponseEntity<Void> restaurarUsuario(@PathVariable Long id_usuarios) {
+        if (usuariosService.restoreById(id_usuarios)) {
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
