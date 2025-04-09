@@ -8,5 +8,5 @@ CREATE TABLE Usuarios (
     email VARCHAR(200) NOT NULL,
     rol CHAR(1) NOT NULL,
     registro_actual DATETIME DEFAULT GETDATE(),
-    estado CHAR(1) NOT NULL
+    estado NVARCHAR(200) DEFAULT 'ACTIVO',
 );

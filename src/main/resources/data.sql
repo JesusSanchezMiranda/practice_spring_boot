@@ -5,16 +5,14 @@ INSERT INTO Usuarios (
     apellido, 
     celular, 
     email, 
-    rol, 
-    estado
+    rol 
 ) 
 VALUES (
     'DNI',                      
-    '43525634',               
-    'Carlos',                     
-    'Condorcanqui',                    
-    '987456234',               
-    'juan.perez@example.com',   
-    'A',                        
-    'A'                         
+    '78564534',               
+    'Andre',                     
+    'Caycho',                    
+    '987478675',               
+    'andre.caycho@example.com',   
+    'A'                                                 
 );
