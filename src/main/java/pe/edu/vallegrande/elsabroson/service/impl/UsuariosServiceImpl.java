@@ -63,7 +63,7 @@ public class UsuariosServiceImpl implements UsuariosService {
         Optional<Usuarios> usuarioOpt = usuariosRepository.findById(id_usuarios);
         if (usuarioOpt.isPresent()) {
             Usuarios usuario = usuarioOpt.get();
-            usuario.setEstado("ELIMINADO"); // E = Eliminado
+            usuario.setEstado("E"); // E = Eliminado
             usuariosRepository.save(usuario);
             log.info("Usuario con ID: " + id_usuarios + " marcado como ELIMINADO");
             return true;

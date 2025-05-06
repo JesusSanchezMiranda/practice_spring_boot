@@ -44,7 +44,7 @@ public class Usuarios {
     private String registro_actual;
 
     @Column(name = "estado")
-    private String estado = "ACTIVO";
+    private String estado = "A";
 
     // Getters y Setters
 
