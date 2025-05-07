@@ -6,5 +6,5 @@ import pe.edu.vallegrande.elsabroson.model.Users;
 
 
 public interface UsersRepository extends JpaRepository<Users, Long> {
-    List<Users> findByEstado(String state);
+    List<Users> findByState(String state);
 }

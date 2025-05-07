@@ -6,10 +6,10 @@ import java.util.Optional;
 import pe.edu.vallegrande.elsabroson.model.Users;
 
 public interface UsersService {
- 
+
     List<Users> findAll();
 
-    List<Users> findByEstado (String state);
+    List<Users> findByState(String state); // ← corregido
 
     Optional<Users> findById(Long users_id);
 
@@ -20,6 +20,4 @@ public interface UsersService {
     void delete(Long users_id);
 
     void restore(Long users_id);
-
-    
 }

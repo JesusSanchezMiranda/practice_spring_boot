@@ -38,8 +38,8 @@ public class UsersRest {
     }
 
     @GetMapping("/estado/{state}")
-    public List <Users> findByEstado(@PathVariable String state) {
-        return usersService.findByEstado(state);
+    public List <Users> findByState(@PathVariable String state) {
+        return usersService.findByState(state);
     }
 
     @GetMapping("/{users_id}")
@@ -47,13 +47,18 @@ public class UsersRest {
         return usersService.findById(users_id);
     }
 
-    @PostMapping("/update")
+    @PostMapping("/save")
+    public Users save(@RequestBody Users users) {
+        return usersService.save(users);
+    }
+
+    @PutMapping("/update")
     public Users update (@RequestBody Users users) {       
         return usersService.update(users);
     }
 
 
-    @DeleteMapping("/delete{users_id}")
+    @DeleteMapping("/delete/{users_id}")
     public void delete(@PathVariable Long users_id) {
         usersService.delete(users_id);
     }
