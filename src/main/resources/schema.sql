@@ -1,12 +1,15 @@
-CREATE TABLE Usuarios (
-    id_usuario INT PRIMARY KEY IDENTITY,
-    tipo_documento CHAR(3) NOT NULL,
-    numero_documento VARCHAR(20) NOT NULL,
-    nombre VARCHAR(200) NOT NULL,
-    apellido VARCHAR(200) NOT NULL,
-    celular CHAR(9) NOT NULL,
-    email VARCHAR(200) NOT NULL,
-    rol CHAR(1) NOT NULL,
-    registro_actual DATETIME DEFAULT GETDATE(),
-    estado NVARCHAR(200) DEFAULT 'ACTIVO',
+CREATE TABLE users (
+    users_id int IDENTITY(1,1),
+    document_type CHAR(3) NOT NULL,
+    document_number VARCHAR(20) NOT NULL,
+    name VARCHAR(60) NOT NULL,
+    last_name VARCHAR(60) NOT NULL,
+    cellphone CHAR(9) NOT NULL,
+    email VARCHAR(120) NOT NULL,
+    role CHAR(1)NOT NULL CHECK (role IN ('A', 'E', 'C')),
+    registration_date DATETIME NOT NULL DEFAULT GETDATE(),
+    state CHAR(1)CHECK (state IN ('A', 'I')) DEFAULT 'A',
+    CONSTRAINT users_pk PRIMARY KEY  (users_id),
+	CONSTRAINT uq_users_document UNIQUE (document_number),
+	CONSTRAINT uq_users_email UNIQUE (email)
 );
