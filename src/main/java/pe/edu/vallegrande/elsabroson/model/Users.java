@@ -1,5 +1,7 @@
 package pe.edu.vallegrande.elsabroson.model;
 
+import java.time.LocalDate;
+
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
@@ -43,8 +45,8 @@ public class Users {
     private String role;
 
     @CreationTimestamp
-    @Column(name = "registration_date")
-    private String registration_date;
+    @Column(name = "registration_date", updatable = false)
+    private LocalDate registration_date;
 
     @Column(name = "state")
     private String state = "A";

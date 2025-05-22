@@ -1,9 +1,9 @@
 server:
-  port: 8080
+  port: 8084
 
 spring:
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=model;encrypt=true;trustServerCertificate=true
+    url: jdbc:sqlserver://localhost:1433;databaseName=db_elsabroson;encrypt=true;trustServerCertificate=true
     username: sa
     password: Admin12345
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
