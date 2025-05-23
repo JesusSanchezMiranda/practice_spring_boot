@@ -3,10 +3,12 @@ package pe.edu.vallegrande.elsabroson.rest;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import pe.edu.vallegrande.elsabroson.model.Users;
 import pe.edu.vallegrande.elsabroson.service.UsersService;
@@ -34,11 +36,20 @@ public class UsersRest {
 
     @GetMapping("/estado/{state}")
     public List<Users> findByState(@PathVariable String state) {
-        return usersService.findByState(state);
+        boolean internalState;
+        if ("A".equalsIgnoreCase(state)) {
+            internalState = true;
+        } else if ("I".equalsIgnoreCase(state)) {
+            internalState = false;
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El estado debe ser 'A' o 'I'");
+        }
+
+        return usersService.findByState(internalState);
     }
 
     @GetMapping("/{users_id}")
-    public Optional<Users> findById(@PathVariable Long users_id) {
+    public Optional<Users> findById(@PathVariable Integer users_id) {
         return usersService.findById(users_id);
     }
 
@@ -47,19 +58,19 @@ public class UsersRest {
         return usersService.save(users);
     }
 
-    @PutMapping("/update/{id}")
-    public Users update(@PathVariable("id") Long id, @RequestBody Users users) {
-        users.setUsers_id(id); 
+    @PutMapping("/update/{users_id}")
+    public Users update(@PathVariable("users_id") Integer users_id, @RequestBody Users users) {
+        users.setUsers_id(users_id);
         return usersService.update(users);
     }
 
     @DeleteMapping("/delete/{users_id}")
-    public void delete(@PathVariable Long users_id) {
+    public void delete(@PathVariable Integer users_id) {
         usersService.delete(users_id);
     }
 
     @PutMapping("/restore/{users_id}")
-    public void restore(@PathVariable Long users_id) {
+    public void restore(@PathVariable Integer users_id) {
         usersService.restore(users_id);
     }
 

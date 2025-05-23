@@ -31,13 +31,13 @@ public class UsersServiceImpl implements UsersService {
 
 
     @Override
-    public Optional<Users> findById(Long users_id) {
+    public Optional<Users> findById(Integer users_id) {
         log.info("Listado datos por ID: ");
         return usersRepository.findById(users_id);
     }
 
     @Override
-    public List<Users> findByState(String state) {
+    public List<Users> findByState(boolean state) {
         log.info("Listado de datos por estado: ");
         return usersRepository.findByState(state); // corregido
     }
@@ -56,7 +56,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public void delete(Long users_id) {
+    public void delete(Integer users_id) {
         log.info("Listado datos por ID: ");
         Optional<Users> users= usersRepository.findById(users_id);
         users.ifPresent(
@@ -67,7 +67,7 @@ public class UsersServiceImpl implements UsersService {
 
 
     @Override
-    public void restore(Long users_id) {
+    public void restore(Integer users_id) {
         log.info("Listado Datos por ID: ");
         Optional<Users> users= usersRepository.findById(users_id);
         users.ifPresent(

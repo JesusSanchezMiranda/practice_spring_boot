@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Data
 @Table(name = "users")
@@ -21,7 +20,7 @@ public class Users {
     @Id
     @Column(name = "users_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long users_id;
+    private Integer users_id;
 
     @Column(name = "document_type")
     private String document_type;
@@ -49,7 +48,14 @@ public class Users {
     private LocalDate registration_date;
 
     @Column(name = "state")
-    private String state = "A";
+    private boolean state = true; // true = 'A', false = 'I'
 
-    
+    public String getState() {
+        return state ? "A" : "I";
+    }
+
+    public void setState(String stateChar) {
+        this.state = "A".equalsIgnoreCase(stateChar);
+    }
+
 }

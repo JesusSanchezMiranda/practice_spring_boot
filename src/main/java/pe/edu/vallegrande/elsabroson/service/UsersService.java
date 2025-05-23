@@ -9,15 +9,15 @@ public interface UsersService {
 
     List<Users> findAll();
 
-    List<Users> findByState(String state); // ← corregido
+    List<Users> findByState(boolean state); // ← corregido
 
-    Optional<Users> findById(Long users_id);
+    Optional<Users> findById(Integer users_id);
 
     Users save(Users users);
 
     Users update(Users users);
 
-    void delete(Long users_id);
+    void delete(Integer users_id);
 
-    void restore(Long users_id);
+    void restore(Integer users_id);
 }
