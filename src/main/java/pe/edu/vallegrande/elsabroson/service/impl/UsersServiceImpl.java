@@ -37,7 +37,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public List<Users> findByState(boolean state) {
+    public List<Users> findByState(String state) {
         log.info("Listado de datos por estado: ");
         return usersRepository.findByState(state); // corregido
     }

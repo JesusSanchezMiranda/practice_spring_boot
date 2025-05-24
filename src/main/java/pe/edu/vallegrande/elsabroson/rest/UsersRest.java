@@ -3,12 +3,12 @@ package pe.edu.vallegrande.elsabroson.rest;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.http.HttpStatus;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
+
 
 import pe.edu.vallegrande.elsabroson.model.Users;
 import pe.edu.vallegrande.elsabroson.service.UsersService;
@@ -34,18 +34,10 @@ public class UsersRest {
         return usersService.findAll();
     }
 
-    @GetMapping("/estado/{state}")
-    public List<Users> findByState(@PathVariable String state) {
-        boolean internalState;
-        if ("A".equalsIgnoreCase(state)) {
-            internalState = true;
-        } else if ("I".equalsIgnoreCase(state)) {
-            internalState = false;
-        } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El estado debe ser 'A' o 'I'");
-        }
 
-        return usersService.findByState(internalState);
+    @GetMapping("/estado/{state}")
+    public List <Users> findByState(@PathVariable String state) {
+        return usersService.findByState(state);
     }
 
     @GetMapping("/{users_id}")

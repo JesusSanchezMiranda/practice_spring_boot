@@ -9,7 +9,7 @@ public interface UsersService {
 
     List<Users> findAll();
 
-    List<Users> findByState(boolean state); // ← corregido
+    List<Users> findByState(String state); // ← corregido
 
     Optional<Users> findById(Integer users_id);
 

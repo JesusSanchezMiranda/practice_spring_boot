@@ -48,14 +48,6 @@ public class Users {
     private LocalDate registration_date;
 
     @Column(name = "state")
-    private boolean state = true; // true = 'A', false = 'I'
-
-    public String getState() {
-        return state ? "A" : "I";
-    }
-
-    public void setState(String stateChar) {
-        this.state = "A".equalsIgnoreCase(stateChar);
-    }
+    private String state = "A";
 
 }
